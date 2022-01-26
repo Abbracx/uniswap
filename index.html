@@ -26,6 +26,50 @@
             </div>
         </div>
     </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-6 offset-md-3" id="window">
+                <h4>Swap</h4>
+                <div id="form">
+                    <div class="swapbox">
+                        <div class="swapbox_select token_select" id="from_token_select">
+                            <img class="token_image"  id="from_token_img" alt="">
+                            <span id="from_token_text"></span>
+                            
+                        </div>
+                        <div class="swapbox_select">
+                            <input class="number form-control" placeholder="amount" id="from_amount">
+                        </div>
+                    </div>
+                    <div class="swapbox">
+                        <div class="swapbox_select token_select" id="to_token_select">
+                            <img class="token_image"  id="to_token_img" alt="">
+                            <span id="to_token_text"></span>
+                        </div>
+                        <div class="swapbox_select">
+                            <input class="number form-control" placeholder="amount" id="to_amount">
+                        </div>
+                    </div>  
+                    <button class="btn btn-large btn-primary btn-block" id="swap_button">swap</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="token_modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Select token</h5>
+                    <button type="button" class="btn-close" id="modal_close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="token_list">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./main.js"></script>
   </body>
