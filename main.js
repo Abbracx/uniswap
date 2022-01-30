@@ -48,6 +48,7 @@ async function selectToken(address){
     currentTrade[currentSelectSide] = tokens[address];
     console.log(currentTrade);
     renderInterface()
+    getQoute();
 }
 
 function renderInterface(){
@@ -92,10 +93,31 @@ function closeModal(){
     document.getElementById("token_modal").style.display = "none";
 }
 
+async function getQoute(){
+
+    if(!currentTrade.from || !currentTrade.to || !document.getElementById("from_amount").value) return;
+    let amount = Number( 
+        document.getElementById("from_amount").value * 10**currentTrade.from.decimals 
+        );
+    
+    const quote = await Moralis.Plugins.oneInch.quote({
+        chain: "eth", // The blockchain you want to use (eth/bsc/polygon)
+        fromTokenAddress: currentTrade.from.address, // The token you want to swap
+        toTokenAddress: currentTrade.to.address, // The token you want to receive
+        amount: amount, 
+    });
+    console.log(quote); 
+    document.getElementById("gas_estimate").textContent = quote.estimatedGas;
+    document.getElementById("to_amount").value = quote.toTokenAmount / (10**quote.toToken.decimals)
+} 
+
+
+
 init();
 document.getElementById("modal_close").onclick = closeModal;
-document.getElementById("from_token_select").onclick = () => {openModal("from")};
-document.getElementById("to_token_select").onclick = () => {openModal("to")};
+document.getElementById("from_token_select").onclick = (() => {openModal("from")});
+document.getElementById("to_token_select").onclick = (() => {openModal("to")});
+document.getElementById("from_amount").onblur = getQoute;
 document.getElementById("btn-login").onclick = login;
 document.getElementById("btn-logout").onclick = logOut;
 
