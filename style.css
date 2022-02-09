@@ -46,3 +46,12 @@
     background-color: #464646;
     cursor: pointer;
 }
+
+.btn {
+    margin-left: 10px;
+}
+
+.page-header {
+    text-align: center;
+    margin-top: 5px;
+}

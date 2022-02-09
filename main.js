@@ -1,6 +1,6 @@
 /** Connect to Moralis server */
-const serverUrl = "https://lebvoh9gomrm.usemoralis.com:2053/server";
-const appId = "Yy3JFA7KjoJ7rVQSZcYSoG5z7sbIG2XT2UTDZXxh";
+const serverUrl = "https://pu3i7qbbkrtq.usemoralis.com:2053/server";
+const appId = "5YTGCpBDEdYadzLCtMnmgJvedpSREVzONkYCTX4Z";
 Moralis.start({ serverUrl, appId });
 
 
@@ -17,9 +17,9 @@ async function init(){
     let user = Moralis.User.current();
     if (user) {
       document.getElementById("swap_button").disabled = false;
+      
     }
-    
-}
+   }
 
 
 async function listAvailableTokens(){
@@ -77,6 +77,8 @@ async function login() {
         user = await Moralis.authenticate({ signingMessage: "Hello World!" });
         console.log(user);
         document.getElementById("swap_button").disabled = false;
+        document.getElementById("btn-logout").disabled = false;
+        document.getElementById("btn-login").disabled = true;
         console.log(user.get("ethAddress"));
     } catch (error) {
       console.log(error);
@@ -87,6 +89,8 @@ async function login() {
 async function logOut() {
   await Moralis.User.logOut();
   console.log("logged out");
+  document.getElementById("btn-logout").disabled = true;
+  document.getElementById("btn-login").disabled = false;
   
 }
 
