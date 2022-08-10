@@ -1,6 +1,7 @@
 /** Connect to Moralis server */
-const serverUrl = "https://pu3i7qbbkrtq.usemoralis.com:2053/server";
-const appId = "5YTGCpBDEdYadzLCtMnmgJvedpSREVzONkYCTX4Z";
+const serverUrl = "https://frb9aitatmpp.usemoralis.com:2053/server";
+
+const appId = "6uItMDwlcMfxiFbo77Pk7Zkmhqm8lrmbfcJcC9xY";
 Moralis.start({ serverUrl, appId });
 
 
